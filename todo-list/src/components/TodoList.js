@@ -1,9 +1,19 @@
 import React from "react";
 import todoItem from "./TodoItem";
+import TodoItem from "./TodoItem";
 
-const TodoList = ()=> {
+const TodoList = ({todos, onDelete, onToggle})=> {
     return (
-        <span>to-do list</span>
+        <div className="bg-white shadow-md rounded-lg">
+            {todos.map((todo) => (
+                <TodoItem 
+                    key={todo.id}
+                    todo={todo}
+                    onDelete={onDelete}
+                    onToggle={onToggle}
+                />
+            ))}
+        </div>
     )
 }
 
