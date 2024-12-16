@@ -1,25 +1,41 @@
+import { useState } from 'react';
 import './App.css';
+import AddTodo from './components/AddTodo';
 import TodoItem from './components/TodoItem'
 import TodoList from './components/TodoList';
 
 function App() {
-  const todos = [
+  const [todos, setTodos] = useState ([
     { id:1, text: 'Aprender react', completed: false },
     {id:2, tex: 'Fazer uma lista de tarefas', completed: true}
-  ]
+  ]);
 
-  const handleDelete = (id) => {
-    console.log("Excluir tarefa com ID: ", id)
+  const addTodo = (text) => {
+    const newTodo = {
+      id: Date.now(),
+      text,
+      completed: false,
+    };
+    setTodos([...todos, newTodo]);
   };
 
-  const handleToggle = (id) => {
-    console.log('Alterar tarefa com ID: ', id)
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) => 
+        todo.id === id ? {...todo, completed: !todo.complet} : todo
+      )
+    );
   };
 
   return (
     <div className="text-center mt-10">
       <h1 className="text-4xl font-bold text-blue-600 mb-6">Minha lista de Tarefas</h1>
-    <TodoList todos={todos} onDelete={handleDelete} onToggle={handleToggle} />
+      <AddTodo onAdd={addTodo}/>
+      <TodoList todos={todos} onDelete={deleteTodo} onToggle={toggleTodo} />
     </div>
   );
 }
