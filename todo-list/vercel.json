@@ -1,13 +1,5 @@
 {
-    "build": {
-      "env": {
-        "NODE_ENV": "production"
-      }
-    },
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/build/index.html"
-      }
-    ]
-  }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
