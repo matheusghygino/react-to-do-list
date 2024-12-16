@@ -6,8 +6,7 @@ import TodoList from './components/TodoList';
 
 function App() {
   const [todos, setTodos] = useState ([
-    { id:1, text: 'Aprender react', completed: false },
-    {id:2, tex: 'Fazer uma lista de tarefas', completed: true}
+
   ]);
 
   const addTodo = (text) => {

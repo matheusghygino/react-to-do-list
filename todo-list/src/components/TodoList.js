@@ -1,5 +1,4 @@
 import React from "react";
-import todoItem from "./TodoItem";
 import TodoItem from "./TodoItem";
 
 const TodoList = ({todos, onDelete, onToggle})=> {
